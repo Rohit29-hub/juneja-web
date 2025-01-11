@@ -10,6 +10,7 @@ import { SplashScreen } from "@/components/SplashScreen";
 import { AnimatedStats } from "@/components/AnimatedStats";
 import { useRouter } from "next/navigation";
 import { courses } from "@/data/course";
+
 import * as LucideIcons from "lucide-react";
 type IconName = keyof typeof LucideIcons;
 

@@ -1,4 +1,6 @@
-import { IconName } from "@/app/page";
+import * as LucideIcons from "lucide-react";
+type IconName = keyof typeof LucideIcons;
+
 export const courses = [
     {
         title: "Web Development",

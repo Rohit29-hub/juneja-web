@@ -6,6 +6,7 @@ import { Mail, Phone } from "lucide-react"; // Added phone and calendar icons
 import { useSearchParams } from "next/navigation";
 import { courses } from "@/data/course";
 import { Button } from "@/components/ui/button";
+
 import * as LucideIcons from "lucide-react";
 type IconName = keyof typeof LucideIcons;
 
