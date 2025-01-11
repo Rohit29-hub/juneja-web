@@ -10,10 +10,7 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ type: "spring", stiffness: 200, damping: 20 }}
+    <nav
       className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 border-b"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -108,6 +105,6 @@ export function Navbar() {
           </div>
         </motion.div>
       )}
-    </motion.nav>
+    </nav>
   );
 }

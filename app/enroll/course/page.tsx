@@ -11,7 +11,6 @@ import * as LucideIcons from "lucide-react";
 type IconName = keyof typeof LucideIcons;
 
 
-
 type Course = {
     title: string;
     description: string;
@@ -39,7 +38,7 @@ const EnrollPage = () => {
         timing: ""
     });
 
-    const [course, setCourse] = useState<Course | null>(null); 
+    const [course, setCourse] = useState<Course | null>(null);
 
     const searchParams = useSearchParams();
     const title = searchParams.get("name");
@@ -61,11 +60,11 @@ const EnrollPage = () => {
     const getIcon = (iconName: IconName): JSX.Element | null => {
         const IconComponent = LucideIcons[iconName];
         if (IconComponent) {
-          // @ts-ignore
-          return <IconComponent className="h-6 w-6" />;
+            // @ts-ignore
+            return <IconComponent className="h-6 w-6" />;
         }
         return null;
-      };
+    };
 
     useEffect(() => {
         const single_course = courses.find((course) => course.title === title);
@@ -74,8 +73,8 @@ const EnrollPage = () => {
         }
     }, [title]);
 
-    return course ? (
-        <div className="flex flex-col md:flex-row gap-8 p-8">
+    return course && (
+        <div className="flex flex-col md:flex-row gap-8 md:p-8 p-4">
             {/* Left - Sticky Course Details Card with Border */}
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -88,34 +87,36 @@ const EnrollPage = () => {
                     whileHover={{ scale: 1.02 }}
                     transition={{ type: "spring", stiffness: 300 }}
                 >
-                    <div className="p-6">
-                        <div className="flex items-center mb-4">
-                            <div className="p-2 bg-primary/10 rounded-lg mr-4">
-                                {getIcon(course.icon)} 
+                    <div className="sm:p-6 p-2">
+                        <div className="flex items-center md:mb-4">
+                            <div className="p-2 bg-primary/10 rounded-lg max-sm:mx-3 md:mr-4">
+                                {getIcon(course?.icon || 'Smile')}
                             </div>
-                            <h3 className="text-xl font-semibold text-gray-800">{course.title}</h3>
+                            <h3 className="text-xl font-semibold text-gray-800">{course?.title}</h3>
                         </div>
-                        <p className="text-muted-foreground mb-4 text-gray-600">{course.description}</p>
-                        <div className="mb-4">
-                            <div className="flex items-center text-sm text-muted-foreground mb-2">
-                                <span className="font-medium mr-2">Duration:</span>
-                                {course.duration}
+                        <div className="hidden sm:block">
+                            <p className="text-muted-foreground mb-4 text-gray-600">{course?.description}</p>
+                            <div className="mb-4">
+                                <div className="flex items-center text-sm text-muted-foreground mb-2">
+                                    <span className="font-medium mr-2">Duration:</span>
+                                    {course?.duration}
+                                </div>
+                                <div className="flex items-center text-sm text-muted-foreground">
+                                    <span className="font-medium mr-2">Level:</span>
+                                    {course?.level}
+                                </div>
                             </div>
-                            <div className="flex items-center text-sm text-muted-foreground">
-                                <span className="font-medium mr-2">Level:</span>
-                                {course.level}
+                            <div className="space-y-2 mb-6">
+                                <h4 className="font-medium text-gray-800">Course Modules:</h4>
+                                <ul className="space-y-2">
+                                    {course?.modules.map((module, idx) => (
+                                        <li key={idx} className="flex items-center text-gray-600">
+                                            <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2" />
+                                            {module}
+                                        </li>
+                                    ))}
+                                </ul>
                             </div>
-                        </div>
-                        <div className="space-y-2 mb-6">
-                            <h4 className="font-medium text-gray-800">Course Modules:</h4>
-                            <ul className="space-y-2">
-                                {course.modules.map((module, idx) => (
-                                    <li key={idx} className="flex items-center text-gray-600">
-                                        <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2" />
-                                        {module}
-                                    </li>
-                                ))}
-                            </ul>
                         </div>
                     </div>
                 </motion.div>
@@ -290,9 +291,7 @@ const EnrollPage = () => {
                 </div>
             </div>
         </div>
-    ) : (
-        <p>Loading course details...</p>
-    );
+    )
 };
 
 export default EnrollPage;

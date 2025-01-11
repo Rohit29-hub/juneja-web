@@ -62,7 +62,7 @@ export function ImageCarousel() {
           </div>
           <div className="relative h-full flex items-center justify-center text-center text-white px-4">
             <div>
-              <h2 className="text-8xl mb-4 font-custom">{image.title}</h2>
+              <h2 className="md:text-8xl text-7xl  mb-4 font-custom">{image.title}</h2>
               <p className="text-xl font-regular">{image.description}</p>
             </div>
           </div>

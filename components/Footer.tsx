@@ -15,7 +15,7 @@ export function Footer() {
               Empowering careers through professional computer education and skill development.
             </p>
           </div>
-          
+
           <div>
             <h3 className="font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
@@ -25,7 +25,7 @@ export function Footer() {
               <li><Link href="/login" className="text-muted-foreground hover:text-foreground">Login</Link></li>
             </ul>
           </div>
-          
+
           <div>
             <h3 className="font-semibold mb-4">Contact Info</h3>
             <ul className="space-y-2">
@@ -42,14 +42,14 @@ export function Footer() {
                 </Link>
               </li>
               <li className="flex items-center space-x-2">
-                <MapPin className="h-4 w-4" />
+                <MapPin className="h-4 w-4 flex-shrink-0" />
                 <Link href="https://www.google.com/maps?q=C-2/196, Nand Nagri, Delhi - 110093" className="text-muted-foreground hover:text-foreground" target="_blank">
                   C-2/196, Nand Nagri, Delhi - 110093 (Opposite Post Office)
                 </Link>
               </li>
             </ul>
           </div>
-          
+
           <div>
             <h3 className="font-semibold mb-4">Office Hours</h3>
             <ul className="space-y-2 text-muted-foreground">
@@ -59,9 +59,9 @@ export function Footer() {
             </ul>
           </div>
         </div>
-        
+
         <div className="mt-8 pt-8 border-t text-center text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} IT Expert Education Centre. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Juneja education centre. All rights reserved.</p>
         </div>
       </div>
     </footer>

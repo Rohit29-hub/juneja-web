@@ -17,7 +17,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-secondary flex items-center justify-center px-4">
+    <div className="py-10 bg-white flex items-center justify-center px-4">
       <Card className="w-full max-w-md p-8">
         <div className="text-center mb-8">
           <GraduationCap className="h-12 w-12 mx-auto text-primary mb-4" />
