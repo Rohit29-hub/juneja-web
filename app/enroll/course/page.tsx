@@ -2,11 +2,14 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Input } from "@/components/ui/input";
-import { GraduationCap, Mail, Lock, Phone, Calendar } from "lucide-react"; // Added phone and calendar icons
+import { Mail, Phone } from "lucide-react"; // Added phone and calendar icons
 import { useSearchParams } from "next/navigation";
 import { courses } from "@/data/course";
-import { getIcon, IconName } from "@/app/page";
 import { Button } from "@/components/ui/button";
+import * as LucideIcons from "lucide-react";
+type IconName = keyof typeof LucideIcons;
+
+
 
 type Course = {
     title: string;
@@ -53,6 +56,15 @@ const EnrollPage = () => {
         const { name, value } = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
+
+    const getIcon = (iconName: IconName): JSX.Element | null => {
+        const IconComponent = LucideIcons[iconName];
+        if (IconComponent) {
+          // @ts-ignore
+          return <IconComponent className="h-6 w-6" />;
+        }
+        return null;
+      };
 
     useEffect(() => {
         const single_course = courses.find((course) => course.title === title);

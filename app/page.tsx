@@ -2,17 +2,17 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { GraduationCap, LineChart, Laptop,  CheckCircle, Users, Trophy } from "lucide-react";
+import { GraduationCap, LineChart, Laptop, CheckCircle, Users, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ImageCarousel } from "@/components/ImageCarousel";
 import { SplashScreen } from "@/components/SplashScreen";
-import * as LucideIcons from "lucide-react";
 import { AnimatedStats } from "@/components/AnimatedStats";
 import { useRouter } from "next/navigation";
 import { courses } from "@/data/course";
+import * as LucideIcons from "lucide-react";
+type IconName = keyof typeof LucideIcons;
 
-export type IconName = keyof typeof LucideIcons;
 
 const stats = [
   { label: "Students Trained", value: "5000+", icon: <Users className="h-6 w-6" /> },
@@ -35,15 +35,6 @@ const item = {
   show: { y: 0, opacity: 1 }
 };
 
-export const getIcon = (iconName: IconName): JSX.Element | null => {
-  const IconComponent = LucideIcons[iconName];
-  if (IconComponent) {
-    // @ts-ignore
-    return <IconComponent className="h-6 w-6" />;
-  }
-  return null;
-};
-
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -52,6 +43,16 @@ export default function Home() {
   const handleEnrollCourse = (params: string) => {
     router.push(`/enroll/course/?name=${params}`, { scroll: false });
   }
+
+  const getIcon = (iconName: IconName): JSX.Element | null => {
+    const IconComponent = LucideIcons[iconName];
+    if (IconComponent) {
+      // @ts-ignore
+      return <IconComponent className="h-6 w-6" />;
+    }
+    return null;
+  };
+
 
 
   useEffect(() => {
