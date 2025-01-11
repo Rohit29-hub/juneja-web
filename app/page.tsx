@@ -54,21 +54,20 @@ export default function Home() {
   }
 
 
+  useEffect(() => {
+    const isAlreadyLoaded = sessionStorage.getItem("isLoaded");
 
-  // useEffect(() => {
-  //   const isAlreadyLoaded = sessionStorage.getItem("isLoaded");
+    if (!isAlreadyLoaded) {
+      const timeoutId = setTimeout(() => {
+        sessionStorage.setItem("isLoaded", "true"); // Mark as loaded
+        setLoading(false);
+      }, 3000);
 
-  //   if (!isAlreadyLoaded) {
-  //     const timeoutId = setTimeout(() => {
-  //       sessionStorage.setItem("isLoaded", "true"); // Mark as loaded
-  //       setLoading(false);
-  //     }, 3000);
-
-  //     return () => clearTimeout(timeoutId);
-  //   } else {
-  //     setLoading(false);
-  //   }
-  // }, []);
+      return () => clearTimeout(timeoutId);
+    } else {
+      setLoading(false);
+    }
+  }, []);
 
 
   if (loading) {
